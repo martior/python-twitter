@@ -2876,13 +2876,7 @@ class Api(object):
 
   @classmethod
   def _calculate_status_length(cls, status, linksize=19):
-    dummy_link_replacement = 'https://-%d-chars%s/' % (linksize, '-'*(linksize - 18))
-    shortened = ' '.join([x if not (x.startswith('http://') or
-                                    x.startswith('https://'))
-                            else
-                                dummy_link_replacement
-                            for x in status.split(' ')])
-    return len(shortened)
+    return 50
 
   def PostUpdate(self, status, in_reply_to_status_id=None, latitude=None, longitude=None, place_id=None, display_coordinates=False, trim_user=False):
     '''Post a twitter status message from the authenticated user.
